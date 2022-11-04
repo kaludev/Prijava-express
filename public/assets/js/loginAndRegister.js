@@ -79,12 +79,13 @@ form.onsubmit = async event =>{
             password: pasword.value,
             name : Name.value
         }
+        console.log(body)
         const res = await fetch('/api/users',{
             method:'POST',
             headers:{
                 "Content-Type":"application/json"
             },
-            body:body
+            body:JSON.stringify(body)
         })
         const json = await res.json();
         if(!json.ok){
