@@ -12,16 +12,15 @@ server.get("/", (req,res) =>{
 
 server.post('/api/users', async (req,res) =>{
     const {email,password,name} = req.body;
-
     try{
         await mysql.query(
-            'INSERT INTO users VALUES (?,?,?)',
+            'INSERT INTO users VALUES (?,?,?);',
             [
                 email,
-                password,
-                name
-            ]
-        )
+                name,
+                password
+                
+            ])
         res.status(StatusCodes.CREATED).json({ok:true,message:"Registred succesfully"})
     }catch(error){
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ok:false,message:error.message})
