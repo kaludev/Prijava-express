@@ -91,7 +91,7 @@ form.onsubmit = async event =>{
         if(!json.ok){
             new Error(json.message)
         }
-        alert(res.message)
+        alert(json.message)
     }catch(error){
         alert(error.message)
     }
